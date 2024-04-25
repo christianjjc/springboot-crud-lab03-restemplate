@@ -6,7 +6,6 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +14,7 @@ import java.util.List;
 @Repository
 public class CursoDAO {
 
-
     private RestTemplate restTemplate;
-
-
     @Value("${uri.rest.cursos}")
     private String urlSevidor;
 
@@ -42,8 +38,13 @@ public class CursoDAO {
     }
 
     public CursoDTO guardarCurso(CursoDTO cursoDTO){
-        getRestTemplate().postForEntity(getUrlSevidor(), cursoDTO, CursoDTO.class);
-        return null;
+        // Usar getBody()
+        CursoDTO result = getRestTemplate().postForEntity(getUrlSevidor(), cursoDTO, CursoDTO.class).getBody();
+        return result;
+    }
+
+    public void eliminarCurso(Integer id){
+        getRestTemplate().delete(getUrlSevidor()+"/"+id);
     }
 
 
