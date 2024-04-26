@@ -100,7 +100,7 @@
           <td th:text="${curso.estado}"></td>
           <td>
             <a th:href="@{'editcurso?id='+${curso.id}}" class="btn btn-primary btn-sm">Editar</a>
-            <a th:href="@{'delcurso?nomcurso='+${curso.nomcurso}}" class="btn btn-danger btn-sm">Eliminar</a>
+            <a th:href="@{'delcurso?id='+${curso.id}}" class="btn btn-danger btn-sm">Eliminar</a>
           </td>
         </tr>
         </tbody>

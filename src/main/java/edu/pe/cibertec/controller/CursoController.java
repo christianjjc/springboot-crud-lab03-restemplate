@@ -39,12 +39,11 @@ public class CursoController
   @RequestMapping("/editcurso")
   public ModelAndView editcurso(@RequestParam(value = "id") Integer id)
   {
-//    ModelAndView view = cursosList();
-//    CursoDTO cursoDTO = getCursoService().getCurso(id);
-//    view.getModelMap().remove("cursoDTO");
-//    view.getModelMap().put("cursoDTO", cursoDTO);
-    getCursoService().delCurso(id);
-    return  cursosList();
+    ModelAndView view = cursosList();
+    CursoDTO cursoDTO = getCursoService().getCurso(id);
+    view.getModelMap().remove("cursoDTO");
+    view.getModelMap().put("cursoDTO", cursoDTO);
+    return view;
   }
   
   @RequestMapping("/savecurso")
@@ -59,5 +58,4 @@ public class CursoController
   {
     return cursosList();
   }
-
 }
